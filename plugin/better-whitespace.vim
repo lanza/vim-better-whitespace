@@ -179,7 +179,10 @@ else
 
     " Remove Whitespace matching
     function! s:ClearHighlighting()
-        silent! call matchdelete(get(s:, 'match_id', -1))
+        try
+            silent! call matchdelete(get(s:, 'match_id', -1))
+        catch /.*/
+        endtry
     endfunction
 endif
 
